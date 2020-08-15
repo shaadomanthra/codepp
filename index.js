@@ -5,7 +5,7 @@ const app = Express();
 const port = 4000;
 
 app.get("/",(req,res)=>{
-    res.send("hello world Teja new");
+    res.send("hello world Teja new sample");
 });
 
 app.get("/:id",(req,res)=>{
