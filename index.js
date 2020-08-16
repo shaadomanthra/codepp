@@ -42,7 +42,7 @@ app.get("/whoami",(req,res)=>{
 
 app.get("/hello-world",(req,res)=>{
     //res.send("hello world");
-    const str = shelljs.exec('sudo docker run hello-world');
+    const str = shelljs.exec('bash sample.sh');
     res.send(str);
 });
 

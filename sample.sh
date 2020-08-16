@@ -1,1 +1,1 @@
-echo "hello"
+sudo docker run hello-world
