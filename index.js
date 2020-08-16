@@ -40,6 +40,12 @@ app.get("/whoami",(req,res)=>{
     res.send(r);
 });
 
+app.get("/hello-world",(req,res)=>{
+    //res.send("hello world");
+    const str = shelljs.exec('sudo docker run hello-world');
+    res.send(str);
+});
+
 console.log("hello world KT")
 
 app.listen(port, ()=>{ console.log("Listening on port "+port)})
