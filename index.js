@@ -5,7 +5,7 @@ import shelljs from "shelljs";
 
 
 const app = Express();
-const port = 4000;
+const port = 3000;
 
 
 
