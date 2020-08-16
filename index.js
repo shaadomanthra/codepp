@@ -5,7 +5,7 @@ import shelljs from "shelljs";
 
 
 const app = Express();
-const port = 3000;
+const port = 4000;
 
 
 
@@ -32,6 +32,14 @@ app.get("/ls",(req,res)=>{
     const r = str.replace('\n','<br>');
     res.send(r);
 });
+
+app.get("/whoami",(req,res)=>{
+    //res.send("hello world");
+    const str = shelljs.exec('whoami');
+    const r = str.replace('\n','<br>');
+    res.send(r);
+});
+
 console.log("hello world KT")
 
 app.listen(port, ()=>{ console.log("Listening on port "+port)})
