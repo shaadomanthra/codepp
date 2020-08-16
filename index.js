@@ -2,7 +2,7 @@ import Express from "express";
 import run from "./lib/run.js";
 import engine from "./lib/engine.js";
 import boot from "./lib/boot.js";
-import bodyParser from "body-parser"
+import bodyParser from "body-parser";
 
 const app = Express();
 const port = 3000;
@@ -29,8 +29,9 @@ app.get("/",(req,res)=>{
 
 app.post("/",(req,res)=>{
     var start = new Date()
+    console.log(req.body)
     var payload = boot(req.body);
-    
+    console.log(payload)
     if(payload){
         var data = engine(req.body.lang,payload,req.body.name);
         var end = new Date();
