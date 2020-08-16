@@ -7,9 +7,7 @@ import bodyParser from "body-parser";
 const app = Express();
 const port = 3000;
 
-app.use(bodyParser.urlencoded({ 
-    extended:true
-})); 
+app.use(bodyParser.json())
 
 app.get("/",(req,res)=>{
     var start = new Date()
