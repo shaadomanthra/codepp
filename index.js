@@ -37,7 +37,7 @@ app.post("/",(req,res)=>{
     var start = new Date()
     console.log(req.body)
     var payload = boot(req.body);
-    res.send(payload);
+    res.send("str -" + payload);
     console.log(payload)
     if(payload){
         var data = engine(req.body.lang,payload,req.body.name);
