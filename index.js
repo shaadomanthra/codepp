@@ -28,7 +28,10 @@ app.get("/",(req,res)=>{
 });
 
 app.post("/hello",(req,res)=>{
-    res.send("hello all");
+    res.send("hello post");
+});
+app.get("/hello",(req,res)=>{
+    res.send("hello get");
 });
 app.post("/",(req,res)=>{
     var start = new Date()
