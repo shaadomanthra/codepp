@@ -1,0 +1,1 @@
+{"language":"java","command":"javac Main.java && java Main ", "files": [{"name": "Main.java", "content": ""}]}

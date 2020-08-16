@@ -37,7 +37,6 @@ app.post("/",(req,res)=>{
     var start = new Date()
     console.log(req.body)
     var payload = boot(req.body);
-    res.send("str -" + payload);
     console.log(payload)
     if(payload){
         var data = engine(req.body.lang,payload,req.body.name);
@@ -46,7 +45,10 @@ app.post("/",(req,res)=>{
         data.time = time;
         res.send(data);
     }else{
-        res.send("You are not authorized to used this application");
+        var str = JSON.stringify(req.body);
+        
+
+        res.send("You are not authorized to used this application "+str);
     }
     
 });
