@@ -1,20 +1,31 @@
 import Express from "express";
-import Run from "./lib/run.js"
-import shelljs from "shelljs";
-
-
+import run from "./lib/run.js";
+import engine from "./lib/engine.js";
+import boot from "./lib/boot.js";
 
 const app = Express();
 const port = 3000;
 
-
 app.get("/",(req,res)=>{
-    res.send("Server to run coding - Krishna Teja ");
+    var start = new Date()
+    var payload = boot(req.query);
+    
+    if(payload){
+        var data = engine(req.query.lang,payload,req.query.name);
+        var end = new Date();
+        var time = end - start;
+        data.time = time;
+        res.send(data);
+    }else{
+        res.send("You are not authorized to used this application");
+    }
+    
 });
+
 
 app.get("/code",(req,res)=>{
     var start = new Date()
-    var str = Run();
+    var str = run();
     var end = new Date();
     var time = end - start;
     str.time = time;
