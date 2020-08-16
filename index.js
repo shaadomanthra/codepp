@@ -2,9 +2,14 @@ import Express from "express";
 import run from "./lib/run.js";
 import engine from "./lib/engine.js";
 import boot from "./lib/boot.js";
+import bodyParser from "body-parser"
 
 const app = Express();
 const port = 3000;
+
+app.use(bodyParser.urlencoded({ 
+    extended:true
+})); 
 
 app.get("/",(req,res)=>{
     var start = new Date()
@@ -12,6 +17,22 @@ app.get("/",(req,res)=>{
     
     if(payload){
         var data = engine(req.query.lang,payload,req.query.name);
+        var end = new Date();
+        var time = end - start;
+        data.time = time;
+        res.send(data);
+    }else{
+        res.send("You are not authorized to used this application");
+    }
+    
+});
+
+app.post("/",(req,res)=>{
+    var start = new Date()
+    var payload = boot(req.body);
+    
+    if(payload){
+        var data = engine(req.body.lang,payload,req.body.name);
         var end = new Date();
         var time = end - start;
         data.time = time;
@@ -34,6 +55,8 @@ app.get("/code",(req,res)=>{
     console.log(req.query.sample)
     res.send(str);
 });
+
+
 
 app.get("/hello",(req,res)=>{
     //res.send("hello world");
