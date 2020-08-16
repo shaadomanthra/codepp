@@ -1,5 +1,6 @@
 import Express from "express";
 import Run from "./lib/run.js"
+import shelljs from "shelljs";
 
 
 
@@ -18,6 +19,18 @@ app.get("/code",(req,res)=>{
     console.log(str.stdout);
     console.log(req.query.sample)
     res.send(str);
+});
+
+app.get("/hello",(req,res)=>{
+    //res.send("hello world");
+    const str = shelljs.exec('echo "hello"');
+    res.send(str);
+});
+app.get("/ls",(req,res)=>{
+    //res.send("hello world");
+    const str = shelljs.exec('ls');
+    const r = str.replace('\n','<br>');
+    res.send(r);
 });
 console.log("hello world KT")
 
