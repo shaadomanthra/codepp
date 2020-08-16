@@ -27,6 +27,9 @@ app.get("/",(req,res)=>{
     
 });
 
+app.post("/hello",(req,res)=>{
+    res.send("hello all");
+});
 app.post("/",(req,res)=>{
     var start = new Date()
     console.log(req.body)
