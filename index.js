@@ -1,17 +1,24 @@
 import Express from "express";
-import Products from "./products.js";
+import Run from "./lib/run.js"
+
+
 
 const app = Express();
-const port = 4000;
+const port = 3000;
+
+
 
 app.get("/",(req,res)=>{
-    res.send("hello world Teja new sample");
+    res.send("Server to run coding");
 });
 
-app.get("/:id",(req,res)=>{
+app.get("/code",(req,res)=>{
     //res.send("hello world");
-    res.send(req.params);
+    const str = Run();
+    console.log(str.stdout);
+    console.log(req.query.sample)
+    res.send(str);
 });
 console.log("hello world KT")
 
-app.listen(port, ()=>{ console.log("Listening on port 3000")})
+app.listen(port, ()=>{ console.log("Listening on port "+port)})

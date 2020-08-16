@@ -1,0 +1,2 @@
+{"language": "python","command":"python main.py ", "files": [{"name": "main.py", "content": "n=10 
+print(n)"}]}
