@@ -40,6 +40,7 @@ app.get("/hello",(req,res)=>{
 
 app.all("/python",(req,res)=>{
     var start = new Date()
+    console.log(req.body)
     var name = req.body.name;
     var image = req.body.image;
 
