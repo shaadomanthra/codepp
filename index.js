@@ -5,10 +5,14 @@ import pythonrun from "./lib/yolo.js";
 import boot from "./lib/boot.js";
 import bodyParser from "body-parser";
 
+
 const app = Express();
 const port = 3000;
 
-app.use(bodyParser.json())
+//app.use(bodyParser.json())
+
+app.use(bodyParser.json({ limit: '50mb' }))
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }))
 
 app.get("/",(req,res)=>{
     var start = new Date()
@@ -26,6 +30,7 @@ app.get("/",(req,res)=>{
     
 });
 
+
 app.post("/hello",(req,res)=>{
     res.send("hello post");
 });
@@ -38,6 +43,7 @@ app.all("/python",(req,res)=>{
     var name = req.body.name;
     var image = req.body.image;
 
+    console.log(name)
     if(!name)
         name = '1';
     
