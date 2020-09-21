@@ -6,7 +6,7 @@ import boot from "./lib/boot.js";
 import bodyParser from "body-parser";
 
 const app = Express();
-const port = 4000;
+const port = 3000;
 
 //app.use(bodyParser.json())
 
