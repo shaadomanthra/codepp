@@ -1,1 +1,10 @@
-{"language": "python","command":"python main.py ", "files": [{"name": "main.py", "content": "print(\"hello\")"}]}
+{
+  "language": "java",
+  "command": "javac Main.java && java Main ",
+  "files": [
+    {
+      "name": "Main.java",
+      "content": "class Main {\n public static void main(String args[]) {\n // first input\n System.out.println(\"hello\");\n}\n}"
+    }
+  ]
+}

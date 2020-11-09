@@ -1,8 +1,8 @@
 import cp from "child_process";
 const exec = cp.exec;
-const args = ["run", "-i", "glot/java"];
-var $c =
-  '{"language":"csharp","command":"mcs -out:a.exe main.cs && mono a.exe ", "files": [{"name": "main.cs", "content": "using System; class HelloWorld { static void Main() { Console.Write(\\"Hello World,\\");}}"}]}';
+const args = ["run", "-i", "glot/mono"];
+var $payload =
+  '{"language":"csharp","command":"mcs -out:a.exe main.cs && mono a.exe ", "files": [{"name": "main.cs", "content": "using System;\\\n class HelloWorld\\\n { static void Main()\\\n { Console.Write(\\"Hello World,\\");}}"}]}';
 
 // var echo = spawn("echo", [
 //   'class Main {public static void main(String[] args) {System.out.println("Hello World!");}}',
@@ -13,14 +13,28 @@ var $c =
 // echo.stdout.pipe(grep.stdin);
 // grep.stdout.pipe(process.stdin);
 
-child.stdout.on("data", (data) => {
-  console.log(`stdout: ${data}`);
-});
+var process = exec("printf %s '" + $payload + "' > file.json | cat file.json ");
 
-child.stderr.on("data", (data) => {
-  console.error(`stderr: ${data}`);
-});
+// var process = exec(
+//   "cat json/415.json | docker run -i glot/java /bin/bash -c cat"
+// );
 
-child.on("close", (code) => {
-  console.log(`child process exited with code ${code}`);
+//sconsole.log($payload.replace(/\n/g, "\\n"));
+// var p = exec("echo '" + $payload.replace(/\n/g, "\\n") + "'");
+
+// p.stdout.on("data", (output) => {
+//   // var data = JSON.parse(output);
+//   // var result = JSON.stringify(data);
+//   console.log(output);
+// });
+
+// console.log($payload);
+
+process.stdout.on("data", (output) => {
+  var data = JSON.parse(output);
+  var result = JSON.stringify(data);
+  console.log(result);
+});
+process.stderr.on("data", (error) => {
+  console.log("Error - " + error.toString());
 });

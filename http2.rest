@@ -3,12 +3,12 @@ Content-Type: application/json
 Content-Length: 27
 
 {
-    "name":"sample8",
+    "name":"sample9",
     "hash":"krishnateja",
     "c":"1",
     "docker":"1",
     "lang":"java",
-    "code":"class Main {public static void main(String[] args) {System.out.println(\"Hello World!\");}}"
+    "code":"class Main {\n public static void main(String args[]) {\n // first input\n System.out.println(args[0]);\n // second input\n System.out.println(args[1]);\n }\n }"
 
 }
 
