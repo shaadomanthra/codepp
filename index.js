@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
   var payload = boot(req.query);
 
   if (payload) {
-    var data = engine(req.query.lang, payload, req.query.name, res);
+    var data = engine(req.query.lang, payload, req.query.name, res, start);
     // if (data != 1) {
     //   var end = new Date();
     //   var time = end - start;
