@@ -1,6 +1,6 @@
 import Express from "express";
 import run from "./lib/run.js";
-import engine from "./lib/engine.js";
+import engine from "./lib/engine2.js";
 import pythonrun from "./lib/yolo.js";
 import boot from "./lib/boot.js";
 import bodyParser from "body-parser";
@@ -24,11 +24,13 @@ app.get("/", (req, res) => {
   var payload = boot(req.query);
 
   if (payload) {
-    var data = engine(req.query.lang, payload, req.query.name);
-    var end = new Date();
-    var time = end - start;
-    data.time = time;
-    res.send(data);
+    var data = engine(req.query.lang, payload, req.query.name, res);
+    // if (data != 1) {
+    //   var end = new Date();
+    //   var time = end - start;
+    //   //data.time = time;s
+    //   res.send(data);
+    // }
   } else {
     res.send("You are not authorized to used this application");
   }
@@ -71,15 +73,13 @@ app.all("/python", (req, res) => {
 
 app.post("/", (req, res) => {
   var start = new Date();
-  console.log(req.body);
   var payload = boot(req.body);
-  console.log(payload);
   if (payload) {
-    var data = engine(req.body.lang, payload, req.body.name);
-    var end = new Date();
-    var time = end - start;
-    data.time = time;
-    res.send(data);
+    var data = engine(req.body.lang, payload, req.body.name, res, start);
+    // var end = new Date();
+    // var time = end - start;
+    // data.time = time;
+    // res.send(data);
   } else {
     var str = JSON.stringify(req.body);
     res.send("You are not authorized to used this application " + str);
