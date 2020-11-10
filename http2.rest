@@ -8,6 +8,7 @@ Content-Length: 27
     "c":"1",
     "docker":"1",
     "lang":"java",
+    "input":"'new sample' 'olld'",
     "code":"class Main {\n public static void main(String args[]) {\n // first input\n System.out.println(args[0]);\n // second input\n System.out.println(args[1]);\n }\n }"
 
 }
