@@ -1,1 +1,0 @@
-{"language":"java","command":"javac Main.java && java Main 'new sample' 'olld'", "files": [{"name": "Main.java", "content": "class Main {\n public static void main(String args[]) {\n // first input\n System.out.println(args[0]);\n // second input\n System.out.println(args[1]);\n }\n }"}]}

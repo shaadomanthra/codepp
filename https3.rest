@@ -1,0 +1,15 @@
+POST http://localhost:3000 HTTP/1.1
+Content-Type: application/json
+Content-Length: 27
+
+{
+    "name":"sample9",
+    "hash":"krishnateja",
+    "c":"1",
+    "docker":"1",
+    "lang":"bash",
+    "input":"'new sample' 'olld'",
+    "code":"echo $1 $2"
+
+}
+
