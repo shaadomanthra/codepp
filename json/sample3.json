@@ -1,0 +1,1 @@
+{"language":"swift","command":"swift main.swift 'new sample' 'olld'", "files": [{"name": "main.swift", "content": "print(CommandLine.arguments[1])"}]}

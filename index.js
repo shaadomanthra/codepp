@@ -1,7 +1,7 @@
 import Express from "express";
 import run from "./lib/run.js";
 import engine from "./lib/engine3.js";
-import pythonrun from "./lib/yolo.js";
+import pythonrun from "./lib/yolo2.js";
 import boot from "./lib/boot.js";
 import bodyParser from "body-parser";
 
@@ -44,7 +44,6 @@ app.get("/hello", (req, res) => {
 });
 
 app.all("/python", (req, res) => {
-  var start = new Date();
   console.log(JSON.stringify(req.body));
   var name = req.body.name;
   var image = req.body.image;
@@ -53,18 +52,8 @@ app.all("/python", (req, res) => {
   if (!name) name = "1";
 
   if (name) {
-    var data = pythonrun(image, name);
+    var data = pythonrun(image, name, res);
     //console.log(data)
-    var end = new Date();
-    var time = end - start;
-    data["time"] = time.toString();
-    var response = {};
-    response["image"] = data["image"];
-    response["count"] = data["count"];
-    response["time"] = data["time"];
-
-    console.log(JSON.stringify(response));
-    res.send(response);
   } else {
     var str = JSON.stringify(req.body);
     res.send("You are not authorized to used this application :" + str);

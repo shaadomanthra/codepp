@@ -3,13 +3,13 @@ Content-Type: application/json
 Content-Length: 27
 
 {
-    "name":"sample9",
+    "name":"sample5",
     "hash":"krishnateja",
     "c":"1",
     "docker":"1",
-    "lang":"bash",
+    "lang":"swift",
     "input":"'new sample' 'olld'",
-    "code":"echo $1 $2"
+    "code":"print(CommandLine.arguments[1]) \n print(CommandLine.arguments[2])"
 
 }
 
