@@ -1,15 +1,8 @@
-POST http://localhost:3000 HTTP/1.1
+GET http://localhost:3000/python HTTP/1.1
 Content-Type: application/json
 Content-Length: 27
 
 {
-    "name":"sample5",
-    "hash":"krishnateja",
-    "c":"1",
-    "docker":"1",
-    "lang":"swift",
-    "input":"'new sample' 'olld'",
-    "code":"print(CommandLine.arguments[1]) \n print(CommandLine.arguments[2])"
-
+    "hash":"krishnateja"
 }
 

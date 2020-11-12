@@ -48,8 +48,8 @@ app.all("/python", (req, res) => {
   var name = req.body.name;
   var image = req.body.image;
 
-  console.log(name);
   if (!name) name = "1";
+  console.log(name);
 
   if (name) {
     var data = pythonrun(image, name, res);

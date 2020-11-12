@@ -7,9 +7,9 @@ Content-Length: 27
     "hash":"krishnateja",
     "c":"1",
     "docker":"1",
-    "lang":"java",
+    "lang":"python",
     "input":"'new sample' 'olld'",
-    "code":"class Main {\n public static void main(String args[]) {\n // first input\n System.out.println(args[0]);\n // second input\n System.out.println(args[1]);\n }\n }"
+    "code":"print('hello')"
 
 }
 
