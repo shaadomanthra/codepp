@@ -117,13 +117,13 @@ if len(idxs) > 0:
 			count = count +1
 			cv2.rectangle(image, (x, y), (x + w, y + h), color, 8)
 			text = "{}".format(LABELS[classIDs[i]])
-			cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX,
+			cv2.putText(image, text, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX,
 				0.5, color, 2)
 		if LABELS[classIDs[i]] == 'cell phone':
 			count = count +1
-			cv2.rectangle(image, (x, y), (x + w, y + h), (255,0,0), 8)
+			cv2.rectangle(image, (x, y), (x + w, y + h), (255,0,0), 2)
 			text = "{}".format(LABELS[classIDs[i]])
-			cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX,
+			cv2.putText(image, text, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX,
 				0.5, (255,0,0), 2)
 
 
