@@ -8,6 +8,7 @@ import argparse
 import time
 import cv2
 import os
+import json
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -63,6 +64,7 @@ end = time.time()
 boxes = []
 confidences = []
 classIDs = []
+c = {}
 
 # loop over each of the layer outputs
 for output in layerOutputs:
@@ -101,6 +103,7 @@ idxs = cv2.dnn.NMSBoxes(boxes, confidences, args["confidence"],
 	args["threshold"])
 
 count = 0
+count_cell = 0
 # ensure at least one detection exists
 if len(idxs) > 0:
 	# loop over the indexes we are keeping
@@ -120,12 +123,13 @@ if len(idxs) > 0:
 			cv2.putText(image, text, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX,
 				0.5, color, 2)
 		if LABELS[classIDs[i]] == 'cell phone':
-			count = count +1
+			count_cell = count_cell +1
 			cv2.rectangle(image, (x, y), (x + w, y + h), (255,0,0), 2)
 			text = "{}".format(LABELS[classIDs[i]])
 			cv2.putText(image, text, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX,
 				0.5, (255,0,0), 2)
 
-
+c = {"person":count,"cell_phone":count_cell}
+y = json.dumps(c)
 cv2.imwrite(args["image"],image)
-print(count)
+print(y)
